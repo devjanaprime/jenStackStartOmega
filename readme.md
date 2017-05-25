@@ -76,3 +76,43 @@ Create Object to send to Server
 DO a little play:
 
 !['gif'](nodeExpressRolePlay.gif)
+
+Setup for POST:
+
+- install body-parser in terminal (stop server if running): ```npm install body-parser --save```
+- require body parser in server file: ```var bodyParser = require( 'body-parser' );```
+- set up the app.use for bodyParser: ```app.use( bodyParser.urlencoded( { extended: true } ) );```
+
+Our first post:
+
+In server file:
+```
+app.post( '/newSong', function( req, res ){
+  console.log( 'post hit to /newSong:', req.body );
+  songs.push( req.body );
+  res.send( 'meow' );
+});
+```
+
+In client js file, update on click for button:
+```
+$( '#addSongButton' ).on( 'click', function(){
+  console.log( 'in addSongButton on click' );
+  // get user input
+  // create an object to send to server
+  var objectToSend = {
+    song: $( '#songIn' ).val(),
+    artist: $( '#artistIn' ).val()
+  }; // end objectToSend
+  console.log( 'sending:', objectToSend );
+  // use AJAX to send Object to server
+  $.ajax({
+    type: 'POST',
+    url: '/newSong',
+    data: objectToSend,
+    success: function( response ){
+      console.log( 'back from post:', response );
+    } // end success
+  }); //end ajax
+}); // end addSongButton on click
+```
