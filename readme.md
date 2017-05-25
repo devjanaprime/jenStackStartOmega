@@ -72,3 +72,7 @@ Add JS/JQ:
 Set up HTML interface
 Handle user input
 Create Object to send to Server
+
+DO a little play:
+
+!['gif'](nodeExpressRolePlay.gif)
