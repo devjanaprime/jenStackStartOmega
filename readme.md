@@ -44,3 +44,31 @@ app.get( '/', function( req, res ){
 - open 'localhost:5678' in browser
 - should see "I came from the server!!!!" in browser
 - should see "base url hit" in the terminal
+
+Respond with HTML:
+
+- create "views" folder
+- create "index.html" within this folder
+- put some html in there
+- add ```var path = require( 'path' );``` at top of server file with other requires
+- change res.send line to ```res.sendFile( path.resolve( 'views/index.html' ) );```
+- restarted server
+- reload page
+- behold awesome
+
+Add JS/JQ:
+
+- create "public" folder in root
+- create "scripts" folder in "public"
+- create client side js in "scripts"
+- Set public folder to be "static" using express: ```app.use( express.static( 'public' ) );```
+- source in JS in html: ```<script src="scripts/songs.js" charset="utf-8"></script>```
+- restart server
+- reload page
+- check that sourcing worked
+- repeat for jquery
+
+
+Set up HTML interface
+Handle user input
+Create Object to send to Server
